@@ -1,0 +1,43 @@
+<app-user-menu></app-user-menu>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form [formGroup]="myForm" (ngSubmit)="saveIngredient()">
+
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" placeholder="name" class="form-control" formControlName="name">
+                </div>
+
+
+                <div class="form-group">
+                    <label>Effects</label>
+                    <input type="text" placeholder="effects" class="form-control" formControlName="effects">
+                </div>
+
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" placeholder="Description" class="form-control" formControlName="description">
+                </div>
+
+
+                
+                <div class="form-group">
+                    <label>NotConsumeBy</label>
+                    <input type="text" placeholder="Not consume By" class="form-control" formControlName="notConsumeBy">
+                </div>
+
+                
+                <div class="form-group">
+                    <label>Source</label>
+                    <input type="text" placeholder="source" class="form-control" formControlName="source">
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+
+            </form>
+        </div>
+    </div>
+
+</div>
