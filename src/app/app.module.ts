@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule} from "@angular/common/http"
+import { HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http"
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { UserMenuComponent } from './user-menu/user-menu.component';
 import { AddIngredientComponent } from './add-ingredient/add-ingredient.component';
+import { ListIngredientComponent } from './list-ingredient/list-ingredient.component';
+import { AuthTokenInterceptor } from './auth-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { AddIngredientComponent } from './add-ingredient/add-ingredient.componen
     LoginComponent,
     UserHomeComponent,
     UserMenuComponent,
-    AddIngredientComponent
+    AddIngredientComponent,
+    ListIngredientComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,9 @@ import { AddIngredientComponent } from './add-ingredient/add-ingredient.componen
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:AuthTokenInterceptor,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
